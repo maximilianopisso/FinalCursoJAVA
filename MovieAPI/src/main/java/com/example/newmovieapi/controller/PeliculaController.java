@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RequestMapping("desafio4/APImovies")
+@RequestMapping("ProyectoFinal/APImovies")
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 
 public class PeliculaController {
 
@@ -30,19 +31,19 @@ public class PeliculaController {
         return movieService.getMovies();
     }
 
-    @PostMapping("/addpelicula")
-    public Pelicula createMovie(@RequestBody Pelicula movie){
-        return movieService.createMovie(movie);
+    @PostMapping("/addPelicula")
+    public Pelicula createMovie(@RequestBody Pelicula pelicula){
+        return movieService.createMovie(pelicula);
     }
 
-    @DeleteMapping("/deletepelicula/{id}")
+    @DeleteMapping("/deletePelicula/{id}")
     public void deleteMovie(@PathVariable Integer id){
          movieService.deleteMovie(id);
     }
     
-    @PutMapping("/updatepelicula/{id}")
-    public Pelicula updateMovie (@RequestBody Pelicula movie, @PathVariable Integer id) throws Exception{
-        	  return movieService.updateMovie(movie, id);        
+    @PutMapping("/updatePelicula/{id}")
+    public Pelicula updateMovie (@RequestBody Pelicula pelicula, @PathVariable Integer id) throws Exception{
+        	  return movieService.updateMovie(pelicula, id);        
     }
 
     @GetMapping ("/findByTitle/{title}") 

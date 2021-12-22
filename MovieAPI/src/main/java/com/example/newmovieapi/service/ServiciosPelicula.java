@@ -20,22 +20,48 @@ public class ServiciosPelicula {
 	}
 
 	public String saludo() {
-		return "<h1>Bienvenido a mi API de Peliculas<h1>" + "<br>" + "<h2> Para obtener peliculas <h2>"
-				+ "<h4>Metodo GET  url: http://localhost:8080/desafio4/APImovies/pelis<h4>"
-				+ "<h2> Para Agregar peliculas <h2>"
-				+ "<h4>Metodo POST  url: http://localhost:8080/desafio4/APImovies/addpelicula<h4>"
-				+ "<h2> Para Borrar peliculas <h2>"
-				+ "<h4>Metodo DELETE  url: http://localhost:8080/desafio4/APImovies/deletepelicula/{id}<h4>"
-				+ "<h2> Para Actualizar peliculas<h2>"
-				+ "<h4>Metodo PUT url: http://localhost:8080/desafio4/APImovies/updatepelicula/{id}<h4>";
+		return 	 "<h1>Bienvenido a mi API de Peliculas<h1>" 
+				+ "<br>"
+				+ "<hr>"
+				+"<h2>Obtener Listado de Peliculas<h2>"
+				+ "<h4>Metodo GET  url: http://localhost:8080/ProyectoFinal/APImovies/peliculas<h4>"
+				+ "<hr>"
+				+ "<h2>Agregar una Pelicula<h2>"
+				+ "<h4>Metodo POST  url: http://localhost:8080/ProyectoFinal/APImovies/addPelicula<h4>"
+				+ "<hr>"
+				+ "<h2>Borrar una Pelicula<h2>"
+				+ "<h4>Metodo DELETE  url: http://localhost:8080/ProyectoFinal/APImovies/deletePelicula/{id}<h4>"
+				+ "<p>{id} = es el identificador de la pelicula que se quiere borrar</p>"
+				+ "<hr>"
+				+ "<h2>Actualizar Peliculas<h2>"
+				+ "<h4>Metodo PUT url: http://localhost:8080/ProyectoFinal/APImovies/updatePelicula/{id}<h4>"
+				+ "<p>{id} = es el identificador de la pelicula que se quiere actulizar</p>"
+				+ "<hr>"
+				+ "<h2>Buscar Pelicula por Titulo<h2>"
+				+ "<h4>Metodo PUT url: http://localhost:8080/ProyectoFinal/APImovies/findByTitle/{title}<h4>"
+				+ "<p>{title} = es el nombre del titulo a buscar</p>"
+				+ "<hr>"
+				+ "<h2>Buscar Pelicula por Id<h2>"
+				+ "<h4>Metodo GET url: http://localhost:8080/ProyectoFinal/APImovies/findById/{id}<h4>"
+				+ "<p>{id} = es el identificador de la pelicula que a buscar</p>"
+				+ "<hr>"
+				+ "<h2>Top 3 - Peliculas Populares<h2>"
+				+ "<h4>Metodo GET url: http://localhost:8080/ProyectoFinal/APImovies/filter/popular<h4>"
+				+ "<hr>"
+				+ "<h2>Filtrado de Peliculas por Clasificacion<h2>"
+				+ "<h4>Metodo GET url: http://localhost:8080/ProyectoFinal/APImovies/listadoPorClasificacion/{classified}<h4>"
+				+ "<p>{classified} =  clasificacion a buscar</p>"
+				
+	
+	;
 	}
 
 	public List<Pelicula> getMovies() {
 		return movieRepository.findAll();
 	}
 
-	public Pelicula createMovie(Pelicula movie) {
-		return movieRepository.save(movie);
+	public Pelicula createMovie(Pelicula pelicula) {
+		return movieRepository.save(pelicula);
 
 	}
 
@@ -46,6 +72,7 @@ public class ServiciosPelicula {
 	public Pelicula updateMovie(Pelicula peli, Integer id) throws Exception {
 		try {
 			Optional<Pelicula> peliUptade = movieRepository.findById(id);
+			
 			if (!peliUptade.isEmpty()){;
 				return movieRepository.save(peli);
 			}
